@@ -2,10 +2,14 @@
 PY := .venv/bin/python
 CFG := configs/train.yaml
 
-.PHONY: test splits features train eval-test afdb examples app
+.PHONY: test data splits features train eval-test afdb examples app
 
 test:
 	$(PY) -m pytest -q
+
+# Download CinC 2017 and MIT-BIH AFDB from PhysioNet (open access, checksums verified).
+data:
+	bash scripts/download_data.sh
 
 # The split is a file target with no prerequisites: once configs/splits.csv exists,
 # `make splits` does nothing ("Nothing to be done"). Never delete or regenerate it.
