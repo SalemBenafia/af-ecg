@@ -31,6 +31,12 @@ def load_split(cfg, split):
     """Feature rows of one split (train or val only), after checking features and split file agree."""
     if split not in ALLOWED_SPLITS:
         raise ValueError(f"train.py may only load {ALLOWED_SPLITS}, not {split!r}")
+    df = labelled_features(cfg)
+    return df[df["split"] == split].reset_index(drop=True)
+
+
+def labelled_features(cfg):
+    """All feature rows with their split column, after checking that features and split file agree."""
     feats = pd.read_csv(cfg["features_csv"])
     splits = pd.read_csv(cfg["split_file"], dtype=str)
     if splits["record"].duplicated().any():
@@ -40,7 +46,7 @@ def load_split(cfg, split):
     mismatch = df["label"] != df["label_split"]
     if mismatch.any():
         raise ValueError(f"Labels differ between features and split file for {int(mismatch.sum())} records.")
-    return df[df["split"] == split].drop(columns="label_split").reset_index(drop=True)
+    return df.drop(columns="label_split")
 
 
 def choose_abstain_threshold(curve, min_coverage_pct):
