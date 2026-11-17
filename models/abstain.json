@@ -1,0 +1,121 @@
+{
+  "threshold": 0.5,
+  "kept_pct_at_threshold": 92.890625,
+  "fallback": false,
+  "min_coverage_pct": 90,
+  "chosen_on": "val",
+  "curve": [
+    {
+      "threshold": 0.3,
+      "n_kept": 1280,
+      "kept_pct": 100.0,
+      "challenge_F1": 0.7667984264367916,
+      "AF_sensitivity": 0.7927927927927928,
+      "accuracy": 0.78671875
+    },
+    {
+      "threshold": 0.35,
+      "n_kept": 1276,
+      "kept_pct": 99.6875,
+      "challenge_F1": 0.7674889145327022,
+      "AF_sensitivity": 0.7927927927927928,
+      "accuracy": 0.7876175548589341
+    },
+    {
+      "threshold": 0.4,
+      "n_kept": 1262,
+      "kept_pct": 98.59375,
+      "challenge_F1": 0.7753201126904993,
+      "AF_sensitivity": 0.8,
+      "accuracy": 0.7923930269413629
+    },
+    {
+      "threshold": 0.45,
+      "n_kept": 1236,
+      "kept_pct": 96.5625,
+      "challenge_F1": 0.7838169677025825,
+      "AF_sensitivity": 0.8073394495412844,
+      "accuracy": 0.8033980582524272
+    },
+    {
+      "threshold": 0.5,
+      "n_kept": 1189,
+      "kept_pct": 92.890625,
+      "challenge_F1": 0.7949228563347369,
+      "AF_sensitivity": 0.8301886792452831,
+      "accuracy": 0.8124474348191758
+    },
+    {
+      "threshold": 0.55,
+      "n_kept": 1117,
+      "kept_pct": 87.265625,
+      "challenge_F1": 0.8115936828308984,
+      "AF_sensitivity": 0.8613861386138614,
+      "accuracy": 0.8272157564905999
+    },
+    {
+      "threshold": 0.6,
+      "n_kept": 1024,
+      "kept_pct": 80.0,
+      "challenge_F1": 0.8349746970436627,
+      "AF_sensitivity": 0.8673469387755102,
+      "accuracy": 0.857421875
+    },
+    {
+      "threshold": 0.65,
+      "n_kept": 940,
+      "kept_pct": 73.4375,
+      "challenge_F1": 0.8592010866955233,
+      "AF_sensitivity": 0.8947368421052632,
+      "accuracy": 0.8819148936170212
+    },
+    {
+      "threshold": 0.7,
+      "n_kept": 861,
+      "kept_pct": 67.265625,
+      "challenge_F1": 0.8749600571404601,
+      "AF_sensitivity": 0.9111111111111111,
+      "accuracy": 0.8943089430894309
+    },
+    {
+      "threshold": 0.75,
+      "n_kept": 763,
+      "kept_pct": 59.609375,
+      "challenge_F1": 0.8855350330311834,
+      "AF_sensitivity": 0.9146341463414634,
+      "accuracy": 0.9069462647444299
+    },
+    {
+      "threshold": 0.8,
+      "n_kept": 661,
+      "kept_pct": 51.64062499999999,
+      "challenge_F1": 0.8966562484021067,
+      "AF_sensitivity": 0.9240506329113924,
+      "accuracy": 0.9183055975794251
+    },
+    {
+      "threshold": 0.85,
+      "n_kept": 525,
+      "kept_pct": 41.015625,
+      "challenge_F1": 0.9146923220878205,
+      "AF_sensitivity": 0.9264705882352942,
+      "accuracy": 0.9352380952380952
+    },
+    {
+      "threshold": 0.9,
+      "n_kept": 346,
+      "kept_pct": 27.03125,
+      "challenge_F1": 0.9277362344428867,
+      "AF_sensitivity": 0.9322033898305084,
+      "accuracy": 0.9479768786127167
+    },
+    {
+      "threshold": 0.95,
+      "n_kept": 112,
+      "kept_pct": 8.75,
+      "challenge_F1": 0.9704079475797928,
+      "AF_sensitivity": 1.0,
+      "accuracy": 0.9732142857142857
+    }
+  ]
+}
