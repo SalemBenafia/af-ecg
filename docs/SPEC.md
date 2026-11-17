@@ -24,7 +24,7 @@ When it is not confident, it says "Uncertain" instead of guessing.
 ## 4. Data
 | Data set | Content | Role |
 |---|---|---|
-| PhysioNet/CinC Challenge 2017 training set | 8,528 AliveCor recordings, single lead, 300 Hz, 9-61 s. N 5,154 / A 771 / O 2,557 / ~ 46. Labels (version 3) in REFERENCE.csv | train / val / test |
+| PhysioNet/CinC Challenge 2017 training set | 8,528 AliveCor recordings, single lead, 300 Hz, 9-61 s. N 5,050 / A 738 / O 2,456 / ~ 284. Labels (version 3) in REFERENCE.csv (REFERENCE-original.csv, with the first-release labels, is not used) | train / val / test |
 | MIT-BIH Atrial Fibrillation Database (AFDB) | 25 long-term recordings (10 h each), 2 ECG leads at 250 Hz, 23 with signal files; rhythm annotations in .atr | external test only |
 
 - Labels: N normal, A AF, O other rhythm, ~ too noisy.
@@ -118,8 +118,8 @@ Beats are cut from 0.25 s before to 0.45 s after each R peak; the median beat ("
 - "Research prototype from a student hackathon. Not a medical device. It cannot rule out heart disease.
   If you have symptoms, contact a doctor or emergency services."
 - Limitations we always report: label noise and expert disagreement (labels version 3); no patient IDs in
-  CinC 2017; AF vs Other confusion; the change on AFDB; single lead only; the Noisy class is tiny
-  (46 recordings, wide CIs); screening, not diagnosis.
+  CinC 2017; AF vs Other confusion; the change on AFDB; single lead only; the Noisy class is small
+  (284 recordings, 3.3%, wide CIs); screening, not diagnosis.
 - Every number comes from a results file. Every outside statistic has a source, or [ADD SOURCE].
 
 ## 12. Acceptance criteria (end to end)
