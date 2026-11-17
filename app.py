@@ -11,6 +11,11 @@ from pathlib import Path
 APP_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(APP_DIR / "src"))  # works without `pip install -e .` (e.g. on a Hugging Face Space)
 
+try:  # Hugging Face ZeroGPU: installed on the Space (deploy/space/requirements.txt), absent locally
+    import spaces  # noqa: E402
+except ImportError:
+    spaces = None
+
 import gradio as gr  # noqa: E402
 import joblib  # noqa: E402
 import matplotlib  # noqa: E402
@@ -42,6 +47,13 @@ def load_reference_medians(path=BASE / "results" / "explore" / "feature_medians_
 
 
 MEDIANS = load_reference_medians()
+
+
+if spaces is not None:
+    @spaces.GPU
+    def zerogpu_placeholder():
+        """Never called. ZeroGPU Spaces need at least one @spaces.GPU function to start; the model runs on CPU."""
+        return None
 
 
 def fmt(x, digits=2):

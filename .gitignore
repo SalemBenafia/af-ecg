@@ -5,3 +5,10 @@ __pycache__/
 data/
 results/**/predictions.csv
 # models/*.joblib stay in git: they are small and the demo needs them.
+# deploy/space: only README.md, requirements.txt and packages.txt are sources;
+# app.py, src/, models/ and examples/ are copied in by scripts/sync_space.sh
+deploy/space/app.py
+deploy/space/src/
+deploy/space/models/
+deploy/space/examples/
+deploy/space/results/

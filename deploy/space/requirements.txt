@@ -1,0 +1,15 @@
+# Same pins as the repo's requirements.txt (without pytest). scikit-learn, numpy and joblib must match the
+# environment that saved models/*.joblib (scikit-learn 1.9.1, numpy 2.5.5, joblib 1.6.0).
+neurokit2==0.3.0
+wfdb==4.3.1
+scikit-learn==1.9.1
+joblib==1.6.0
+numpy==2.5.5
+scipy==1.18.1
+pandas==3.1.1
+PyYAML==6.0.3
+matplotlib==3.11.2
+gradio==6.32.0
+# Unpinned on purpose: the Hugging Face ZeroGPU builder installs its own pinned `spaces` version,
+# and a different pin here makes pip fail ("Cannot install spaces==A and spaces==B").
+spaces
