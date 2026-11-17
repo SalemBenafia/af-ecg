@@ -1,0 +1,8 @@
+seed: 0
+features_csv: data/features/cinc2017.csv
+split_file: configs/splits.csv
+models: [rr_rule, logreg_rr, gbm]
+models_dir: models
+out_dir: results
+n_boot: 2000
+abstain_min_coverage_pct: 90   # abstain threshold = highest one that still keeps >= 90% of VAL recordings

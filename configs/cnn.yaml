@@ -1,0 +1,10 @@
+seed: 0
+data_root: /content/data/training2017          # unzipped on the Colab machine (fast local disk)
+split_file: configs/splits.csv                 # the SAME split as the feature models
+model_path: /content/drive/MyDrive/af/models/cnn.pt
+out_dir: /content/drive/MyDrive/af/results
+epochs: 30
+batch_size: 64
+lr: 0.001
+weight_decay: 0.0001
+num_workers: 2
