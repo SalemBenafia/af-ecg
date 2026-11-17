@@ -10,7 +10,7 @@ Full product and technical spec: docs/SPEC.md (read it at the start of every new
 - Python 3.12, venv in .venv (uv), package `afdetect` in src/ (installed with `uv pip install -e .`)
 - NeuroKit2 (cleaning, R peaks, quality), wfdb (PhysioNet files), numpy, scipy, pandas 3, scikit-learn, matplotlib
 - Demo: Gradio 6 (app.py), hosted on a Hugging Face Space
-- Optional: PyTorch 1-D CNN (src/afdetect/cnn.py) trained on a Colab GPU via notebooks/colab_cnn.ipynb
+- No deep learning: the team decided against the optional CNN (no PyTorch, no Colab)
 
 ## Commands
 - `make test`: must pass before you say a task is done (= .venv/bin/python -m pytest -q)
@@ -33,14 +33,13 @@ Full product and technical spec: docs/SPEC.md (read it at the start of every new
 - pandas 3: string columns are not numpy dtypes; use pd.api.types helpers.
 - Small, readable functions with docstrings: the team must explain every line to the judges.
 - data/ is git-ignored. models/*.joblib are committed (the demo needs them).
-- Everything runs on the laptop CPU, except the optional CNN. You CANNOT run Colab cells:
-  write the notebook, the human runs it in VS Code on a Colab kernel. Push first (the notebook clones the repo).
+- Everything runs on the laptop CPU. There is no CNN and no Colab step.
 
 ## Architecture (src/afdetect, SPEC section 5)
 data.py (IO) -> features.py (300 Hz, nk.ecg_clean, nk.ecg_peaks, RR / P-wave / f-wave / beat-shape / quality)
 -> extract.py (all records -> one CSV) -> models.py (rr_rule, logreg_rr, gbm) -> train.py (fit on train,
 compare on val, abstain threshold) -> evaluate.py (test split or --external) -> afdb.py (30-s windows)
--> cnn.py (optional) -> app.py (Gradio)
+-> app.py (Gradio)
 
 ## Workflow
 - For changes across several files, propose a short plan first and stay inside the current phase's scope.

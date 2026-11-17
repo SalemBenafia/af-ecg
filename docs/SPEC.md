@@ -50,7 +50,6 @@ When it is not confident, it says "Uncertain" instead of guessing.
 | `train.py` | fit on TRAIN, compare on VAL; writes models/*.joblib, models/abstain.json, results/val/summary.json |
 | `evaluate.py` | `--split test` or `--external <features.csv>`; writes results/<name>/summary.json, RESULTS_table.md, confusion_gbm.png, predictions.csv |
 | `afdb.py` | AFDB -> 30-s windows -> data/features/afdb.csv (record, source_record, label, features) |
-| `cnn.py` | optional ResNet1D; trains on Colab; `--test` evaluates the test split once |
 | `app.py` (repo root) | Gradio demo |
 
 ## 6. Features (21)
@@ -90,16 +89,14 @@ Beats are cut from 0.25 s before to 0.45 s after each R peak; the median beat ("
 | rr_rule (baseline 1) | AF if rmssd_norm > threshold, else Normal. Threshold = the value (quantiles 0.50-0.99 of TRAIN) that maximises AF F1 on TRAIN | rmssd_norm |
 | logreg_rr (baseline 2) | median imputer + standard scaler + LogisticRegression(max_iter=3000, class_weight="balanced") | the 11 RR features |
 | gbm (main) | HistGradientBoostingClassifier(max_iter=400, learning_rate=0.05, max_leaf_nodes=31, l2_regularization=1.0, class_weight="balanced", early_stopping=True, validation_fraction=0.15, random_state=seed) | all 21 features |
-| cnn (optional) | 1-D ResNet on the raw ECG, z-scored per recording: stem conv (kernel 15, stride 2) + BN + ReLU + max-pool; widths 32, 64, 128, 256, each Block(stride 2) + Block(stride 1); average pool; dropout 0.3; 4 outputs. Random 30-s crop (9,000 samples) and random sign flip for training, centre crop for evaluation, zero-pad short records. AdamW, cosine LR, 30 epochs, class-weighted cross-entropy, mixed precision on CUDA; keep the epoch with the best VAL challenge F1 | raw signal |
 
 ## 8. Evaluation protocol
 - Main score: challenge F1 = mean of the F1 scores of N, A and O (the official 2017 score; ~ is excluded).
 - Also: F1 per class, accuracy, AF sensitivity, AF specificity, AF PPV, AF AUROC (p(AF) vs rest), confusion matrix.
 - 95% CIs: bootstrap with 2,000 resamples of recordings; for AFDB, resample source records (windows from the
   same person are not independent).
-- Every decision (features, settings, main model, abstain threshold, CNN or a combination) is made on VAL.
-- Freeze: commit, `git tag v1-frozen`, push. Then run once: `make eval-test` and `make afdb`
-  (optional: the CNN `--test` cell once).
+- Every decision (features, settings, main model, abstain threshold) is made on VAL.
+- Freeze: commit, `git tag v1-frozen`, push. Then run once: `make eval-test` and `make afdb`.
 - After the freeze you may describe errors (P10). You may not change models or settings because of them.
 
 ## 9. Abstain rule
